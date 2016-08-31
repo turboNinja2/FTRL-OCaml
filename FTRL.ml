@@ -1,6 +1,5 @@
 #use "read_tools.ml";;
 #use "print_tools.ml";;
-#load "str.cma";;
 	
 (* indices is a list of int and weights is a float array *)
 
@@ -23,7 +22,6 @@ let rec update indices weights p y alpha =  match indices with
 	| [] -> ()
 	| h::tail -> weights.(h) <- (weights.(h) +. (p -. y) *. alpha) ; update tail weights p y alpha in
 
-let split_line line separator = Str.split (Str.regexp separator) line in 
 
 print_string_list (split_line (read_first_line "train.csv") csv_separator);
 
@@ -41,6 +39,7 @@ print_float (log_loss 0.5 1.);
 print_string "\n";
 print_float (log_loss 0.5 0.);
 print_string "\n";
-print_int (Hashtbl.hash "lol") ;; 
-
+print_int (Hashtbl.hash "lol") ;
+print_string "\n";
+print_string_list (concat_elements ("a"::"b"::[]) ("c"::"d"::[]));
 
