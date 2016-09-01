@@ -15,7 +15,7 @@ let rec update indices weights p y alpha =  match indices with
 	
 (* parameters *)	
 
-let n = pow 2 10 ;;
+let n = pow 2 20 ;;
 let weights = Array.make n 0. ;;
 let dict_stream = dict_reader "train.csv" ;;
 let updater indices weights p y = update indices weights p y 0.01 ;;
