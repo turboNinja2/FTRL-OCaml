@@ -84,3 +84,4 @@ $RECYCLE.BIN/
 *.csv
 *.cmo
 *.cmi
+*.gz

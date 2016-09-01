@@ -29,16 +29,9 @@ from math import exp, log, sqrt
 ##############################################################################
 
 # A, paths
-train = 'train_rev2'               # path to training file
-test = 'test_rev2'                 # path to testing file
-submission = 'submission1234.csv'  # path of to be outputted submission file
-
+train = 'train.csv'               # path to training file
 # B, model
-alpha = .1  # learning rate
-beta = 1.   # smoothing parameter for adaptive learning rate
-L1 = 1.     # L1 regularization, larger value means more regularized
-L2 = 1.     # L2 regularization, larger value means more regularized
-
+alpha = .01  # learning rate
 # C, feature/hash trick
 D = 2 ** 20              # number of weights to use
 do_interactions = False  # whether to enable poly2 feature interactions
@@ -94,7 +87,7 @@ class logistic_regression(object):
 
         # update w
         for i in x:
-            w[i] += g * alpha
+            w[i] -= g * alpha
 
 
 def logloss(p, y):
@@ -140,7 +133,7 @@ def data(path, D):
             del row['click']
 
         # turn hour really into hour, it was originally YYMMDDHH
-        row['hour'] = row['hour'][6:]
+        #row['hour'] = row['hour'][6:]
 
         # build x
         x = [0]  # 0 is the index of the bias term
@@ -161,7 +154,7 @@ def data(path, D):
 start = datetime.now()
 
 # initialize ourselves a learner
-learner = ftrl_proximal(alpha, beta, L1, L2, D, interaction=do_interactions)
+learner = logistic_regression(alpha, D)
 
 # start training
 for e in xrange(epoch):
@@ -188,20 +181,10 @@ for e in xrange(epoch):
             # step 2-2, update learner with label (click) information
             learner.update(x, p, y)
 
-        if t % 2500000 == 0 and t > 1:
+        if t % 1000000 == 0 and t > 1:
             print(' %s\tencountered: %d\tcurrent logloss: %f' % (
                 datetime.now(), t, loss/count))
 
     print('Epoch %d finished, holdout logloss: %f, elapsed time: %s' % (
         e, loss/count, str(datetime.now() - start)))
 
-
-##############################################################################
-# start testing, and build Kaggle's submission file ##########################
-##############################################################################
-
-with open(submission, 'w') as outfile:
-    outfile.write('id,click\n')
-    for t, ID, x, y in data(test, D):
-        p = learner.predict(x)
-        outfile.write('%s,%s\n' % (ID, str(p)))
