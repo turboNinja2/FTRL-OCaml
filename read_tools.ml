@@ -1,4 +1,4 @@
-#load "str.cma";;
+open Str
 
 let csv_separator = "," ;;
 

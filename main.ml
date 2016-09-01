@@ -1,8 +1,5 @@
-#use "read_tools.ml";;
-#use "print_tools.ml";;
-#use "maths.ml"	
-
-open Printf;;
+open Maths
+open Read_tools
 
 (* feature engineering *)
 

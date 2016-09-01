@@ -1,3 +1,0 @@
-python FTRL.py
-
-pause
