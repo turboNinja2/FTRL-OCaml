@@ -91,3 +91,5 @@ $RECYCLE.BIN/
 !*.*
 
 pypy
+*.cmi
+train.csv
