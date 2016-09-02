@@ -17,15 +17,16 @@ let rec update indices weights p y alpha =  match indices with
 
 let n = pow 2 20 ;;
 let weights = Array.make n 0. ;;
-let dict_stream = dict_reader "train.csv" ;;
+let dict_stream = dict_reader "train_small.csv" ;;
 let updater indices weights p y = update indices weights p y 0.01 ;;
 let refresh_loss = 1000000 ;;
 
 (* training *)
 
 let train weights updater dict_stream = 
-	let rec aux weights updater dict_stream t loss n = match (Stream.next dict_stream) with
-	| dict -> Hashtbl.remove dict "id"; 
+	let rec aux weights updater dict_stream t loss n = match (try Some( Stream.next dict_stream) 
+								  with _ -> None) with
+	| Some dict -> Hashtbl.remove dict "id"; 
 			  let y = float_of_string (Hashtbl.find dict "click") in
 			  Hashtbl.remove dict "click";
 			  let indices = get_indices dict n in
@@ -41,7 +42,7 @@ let train weights updater dict_stream =
 			  aux weights updater dict_stream (t + 1) (loss +. (log_loss p y)) n
 			  
 			  
-	| _ -> () in aux weights updater dict_stream 0 0. (Array.length weights);;	
+	| None -> () in aux weights updater dict_stream 0 0. (Array.length weights);;	
 
 
 train weights updater dict_stream;
