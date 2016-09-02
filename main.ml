@@ -3,7 +3,7 @@ open Read_tools
 
 (* feature engineering *)
 
-let get_indices dict n = Hashtbl.fold (fun k v acc -> ((Hashtbl.hash (k^v)) mod n)  :: acc) dict [] ;;
+let get_indices dict n = Hashtbl.fold (fun k v acc -> ((Hashtbl.hash k) lxor (Hashtbl.hash v) mod n)  :: acc) dict [] ;;
 
 (* logistic regression *)
 

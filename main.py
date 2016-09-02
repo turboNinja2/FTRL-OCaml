@@ -142,7 +142,8 @@ def data(path, D):
 	    value = row[key]
 
             # one-hot encode everything with hash trick
-            index = abs(hash(key + '_' + value)) % D
+            # index = abs(hash(key + '_' + value)) % D
+            index = abs(hash(key  + value)) % D
             x.append(index)
 
         yield t, ID, x, y
