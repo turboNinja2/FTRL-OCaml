@@ -25,7 +25,7 @@ let to_dict list1 list2 =
 	| [],[] -> my_hash
 	| a,[] -> failwith err_lists_sizes
 	| [],a -> failwith err_lists_sizes
-	| h1::t1,h2::t2 -> Hashtbl.add my_hash h1 h2; aux t1 t2 my_hash in aux list1 list2 (Hashtbl.create 20)
+	| h1::t1,h2::t2 -> Hashtbl.add my_hash h1 h2; aux t1 t2 my_hash in aux list1 list2 (Hashtbl.create 15)
 	
 let dict_reader file_path = 
 	let line_stream = read_lines file_path in

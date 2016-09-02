@@ -33,7 +33,7 @@ let train weights updater dict_stream =
 			  let p = predict indices weights in
 			  updater indices weights p y;
 			  
-			  if ((t mod refresh_loss) = 0) && t > 0 then begin 
+			  if ((t mod refresh_loss) == 0) && t > 0 then begin 
 				  print_float (loss /. float_of_int(t)); 
 				  print_endline " "; 
 			  end;
