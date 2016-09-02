@@ -31,7 +31,6 @@ let train weights updater dict_stream =
 			  Hashtbl.remove dict "click";
 			  let indices = get_indices dict n in
 			  let p = predict indices weights in
-			  
 			  updater indices weights p y;
 			  
 			  if ((t mod refresh_loss) = 0) && t > 0 then begin 
@@ -41,8 +40,6 @@ let train weights updater dict_stream =
 			  
 			  aux weights updater dict_stream (t + 1) (loss +. (log_loss p y)) n
 			  
-			  
 	| None -> () in aux weights updater dict_stream 0 0. (Array.length weights);;	
-
 
 train weights updater dict_stream;
