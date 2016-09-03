@@ -95,3 +95,4 @@ pypy
 train.csv
 *.exe
 *.cmo
+*.csv
