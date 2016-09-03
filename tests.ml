@@ -1,6 +1,9 @@
-#use "read_tools.ml";;
-#use "print_tools.ml";;
-#use "maths.ml";;
+open Maths
+open Read_tools
+open Print_tools
+open Trees
+
+let dict_stream = dict_reader "train.csv" ;;
 
 print_string_list (split_line (read_first_line "train.csv"));
 print_string_list (split_line (read_first_line "train.csv"));
@@ -27,7 +30,6 @@ print_string "\n";
 print_hashtbl_str_str (to_dict ("a"::"b"::[]) ("c"::"d"::[]));
 print_string "\n";
 
-let dict_stream = dict_reader "train.csv" in
 
 print_hashtbl_str_str (Stream.next dict_stream);
 print_string "\n";
@@ -36,4 +38,6 @@ print_string "\n";
 print_hashtbl_str_str (Stream.next dict_stream);
 
 print_string "\n";
- 
+
+
+draw_int_tree (Node(Leaf(1),0,Node(Leaf(4),2,Leaf(3))));
