@@ -1,9 +1,7 @@
-ocamlc str.cma trees.ml read_tools.ml print_tools.ml maths.ml tests.ml
+ocamlc str.cma splitter.ml trees.ml read_tools.ml print_tools.ml maths.ml tests.ml
 
 camlprog.exe
 
-pause
-
-clean.bat
+start clean.bat
 
 pause

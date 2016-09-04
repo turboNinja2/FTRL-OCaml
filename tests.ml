@@ -2,6 +2,7 @@ open Maths
 open Read_tools
 open Print_tools
 open Trees
+open Splitter
 
 let dict_stream = dict_reader "train.csv" ;;
 
@@ -40,4 +41,4 @@ print_hashtbl_str_str (Stream.next dict_stream);
 print_string "\n";
 
 
-draw_int_tree (Node(Leaf(1),0,Node(Leaf(4),2,Leaf(3))));
+draw_int_tree (Node(Leaf(1),0,Node(Node(Leaf(4),5,Leaf(6)),2,Leaf(3))));
