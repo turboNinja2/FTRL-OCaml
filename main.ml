@@ -4,7 +4,7 @@ open Train
 
 (* data *)
 
-let dict_stream = dict_reader "train_small.csv" ;;
+let train_dict_stream = dict_reader "train_small.csv" ;;
 
 (* parameters *)	
 
@@ -29,4 +29,4 @@ let predict indices = sigmoid (dot_product indices weights) ;;
 
 let update indices p y = _update indices weights p y eta ;;
 
-train update dict_stream feature_engineer predict log_loss refresh_loss "click";;
+train update train_dict_stream feature_engineer predict log_loss refresh_loss "click";;
