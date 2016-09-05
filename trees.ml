@@ -1,7 +1,8 @@
 type 'a tree =
   | Node of ('a tree)*('a)*('a tree)
   | Leaf of 'a
-  
+
+(** Generic print for trees.*)  
 let draw_tree tree to_string =
   let rec print indent tree =
     match tree with
@@ -14,4 +15,5 @@ let draw_tree tree to_string =
         Printf.printf "%s--------\n" indent
   in print "" tree 
   
+(** Prints a tree of integers.*)  
 let draw_int_tree tree = draw_tree tree string_of_int
