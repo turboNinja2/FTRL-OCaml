@@ -42,3 +42,12 @@ print_string "\n";
 
 
 draw_int_tree (Node(Leaf(1),0,Node(Node(Leaf(4),5,Leaf(6)),2,Leaf(3))));
+
+print_string "\n";
+print_int (sign_of_int 100);
+print_string "\n";
+print_int (sign_of_int (-100));
+print_string "\n";
+print_int (sign_of_int 0);
+print_string "\n";
+print_float (sign_of_float 0.);

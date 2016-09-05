@@ -10,7 +10,7 @@ let train_dict_stream = dict_reader "train_small.csv" ;;
 
 let n = pow 2 20 ;;
 let weights = Array.make n 0. ;;
-let refresh_loss = 1000000 ;;
+let refresh_loss = 50000 ;;
 let alpha = 0.01
 
 (* feature engineering *)
@@ -29,4 +29,4 @@ let predict indices = sigmoid (dot_product indices weights) ;;
 
 let update indices p y = _update indices weights ((p -. y) *. alpha) ;;
 
-train update train_dict_stream feature_engineer predict log_loss refresh_loss "click";;
+train train_dict_stream feature_engineer update predict log_loss refresh_loss "click";;

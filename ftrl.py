@@ -21,8 +21,7 @@ import pickle
 ##############################################################################
 
 # A, paths
-train='../input/train.csv'
-test='../input/test.csv'#'vali_100.tsv'
+train='./train_small.csv'
 submission = 'ftrl1sub.csv'  # path of to be outputted submission file
 
 # B, model
@@ -72,8 +71,8 @@ class ftrl_proximal(object):
         # z: weights
         # w: lazy weights
         self.n = [0.] * D
-        self.z = [random() for k in range(D)]#[0.] * D
-        self.w = {}
+        self.z = [0.] * D
+        self.w = [0.] * D
 
     def _indices(self, x):
         ''' A helper generator that yields the indices in x
@@ -210,13 +209,13 @@ def data(path, D):
         #print row
         
         try:
-            ID=row['ID']
-            del row['ID']
+            ID=row['id']
+            del row['id']
         except:
             pass
         # process clicks
         y = 0.
-        target='target'#'IsClick' 
+        target='click'#'IsClick' 
         if target in row:
             if row[target] == '1':
                 y = 1.

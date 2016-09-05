@@ -15,3 +15,7 @@ let rec pow a = function
   | n -> 
     let b = pow a (n / 2) in
     b * b * (if n mod 2 == 0 then 1 else a) 
+
+let sign_of_int z = if z >= 0 then 1 else -1
+
+let sign_of_float z = if z >= 0. then 1. else -1.
