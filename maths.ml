@@ -1,4 +1,4 @@
-(** Various mathematical concepts*)
+(** Various mathematical functions*)
 
 
 (** Given a list of indices \begin{math}v\end{math}  and a vector of weights *)
@@ -15,7 +15,7 @@ let sigmoid x = 1. /. (1. +. exp(0. -. x))
 (** Logarithmic loss, p (the first argument) is the predicted value, y (the second argument) is the actual value*)
 let log_loss p y = match y with 1. -> -. log(p) | _ -> -. log(1. -. p)
 
-(** Evaluates a^b where a is the first argument, b the second argument.*)
+(** Evaluates {%latex: a^b%} where {%latex:a} is the first argument, {%latex:b} the second argument.*)
 let rec pow a = function
   | 0 -> 1
   | 1 -> a

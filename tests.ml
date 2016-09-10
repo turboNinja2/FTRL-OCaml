@@ -24,8 +24,6 @@ print_float (log_loss 0.5 0.);
 print_string "\n";
 print_int (Hashtbl.hash "lol") ;
 print_string "\n";
-print_string_list (concat_elements ("a"::"b"::[]) ("c"::"d"::[]));
-print_string "\n";
 print_int (Hashtbl.length (to_dict ("a"::"b"::[]) ("c"::"d"::[])));
 print_string "\n";
 print_hashtbl_str_str (to_dict ("a"::"b"::[]) ("c"::"d"::[]));
