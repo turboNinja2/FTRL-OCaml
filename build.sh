@@ -1,4 +1,5 @@
 ocamlopt str.cmxa read_tools.ml maths.ml train.ml log_reg.ml -o log_reg
+ocamlopt str.cmxa read_tools.ml maths.ml train.ml ftrl.ml -o ftrl
 ocamldoc -latex trees.ml maths.ml read_tools.ml print_tools.ml train.ml
 pdflatex ocamldoc.out
 
