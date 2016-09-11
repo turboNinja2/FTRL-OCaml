@@ -8,9 +8,16 @@ let train_dict_stream = dict_reader "train_small.csv"
 
 (* parameters *)	
 
+(** Number of slots to store the features*)
 let n = pow 2 20 
+
+(** Vector of weights for the features *)
 let weights = Array.make n 0. 
+
+(** Print progress every refresh_loss lines *)
 let refresh_loss = 1000000 
+
+(** Parameter of the model *)
 let alpha = 0.01
 
 (* feature engineering *)

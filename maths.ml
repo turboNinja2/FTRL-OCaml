@@ -1,6 +1,5 @@
 (** Various mathematical functions*)
 
-
 (** Given a list of indices v  and a vector of weights *)
 let dot_product indices weights =
     let rec aux indices weights acc = 

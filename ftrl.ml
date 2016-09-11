@@ -5,14 +5,24 @@ open Train
 (* parameters *)	
 
 let n = pow 2 20 
+
+(** Vector of weights *)
 let w = Array.make n 0.
+
 let ns = Array.make n 0.
+
 let zs = Array.make n 0.
 
+(** Print information every refresh_loss lines*)
 let refresh_loss = 1000000
+
+(** Parameter of the model *)
 let alpha = 0.005
+(** Parameter of the model *)
 let beta = 1.
+(** Parameter of the model *)
 let l1 = 0.
+(** Parameter of the model *)
 let l2 = 1.
 
 (* feature engineering *)
