@@ -3,8 +3,10 @@ open Read_tools
 open Print_tools
 open Trees
 open Splitter
+open Ring_buffer 
 
 let dict_stream = dict_reader "train.csv" ;;
+let buf = create 2 '0' ;;
 
 print_string_list (split_line (read_first_line "train.csv"));
 print_string_list (split_line (read_first_line "train.csv"));
@@ -49,3 +51,21 @@ print_string "\n";
 print_int (sign_of_int 0);
 print_string "\n";
 print_float (sign_of_float 0.);
+
+  (* *)
+  push buf '1';
+  (* 1 *)
+  push buf '2';
+  (* 1 2 *)
+  push buf '3';
+  (*   2 3 *)
+  assert (pop buf = '2');
+  (*     3 *)
+  push buf '4';
+  (*     3 4 *)
+  assert (pop buf = '3');
+  (*       4 *)
+  assert (pop buf = '4');
+  (*         *)
+  assert (try ignore (pop buf); false with Not_found -> true);
+  assert (try ignore (pop buf); false with Not_found -> true); 
