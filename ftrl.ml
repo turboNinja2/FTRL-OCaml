@@ -4,7 +4,7 @@ open Train
 
 (* parameters *)	
 
-let n = 2 ** 20 
+let n = int_of_float(2. ** 20.)
 
 (** Vector of weights *)
 let w = Array.make n 0.

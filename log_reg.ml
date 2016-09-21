@@ -9,7 +9,7 @@ let train_dict_stream = dict_reader "train_small.csv"
 (* parameters *)	
 
 (** Number of slots to store the features*)
-let n = 2 ** 20 
+let n = int_of_float(2. ** 20.) 
 
 (** Vector of weights for the features *)
 let weights = Array.make n 0. 
