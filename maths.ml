@@ -14,6 +14,8 @@ let sigmoid x = 1. /. (1. +. exp(0. -. x))
 (** Logarithmic loss, p (the first argument) is the predicted value, y (the second argument) is the actual value*)
 let log_loss p y = match y with 1. -> -. log(p) | _ -> -. log(1. -. p)
 
+let sum_squares p y = (p -. y) *. (p -.y)
+
 (** Returns 1 if the input is nonnegative, -1 otherwise *)
 let sign_of_int z = if z >= 0 then 1 else -1
 
